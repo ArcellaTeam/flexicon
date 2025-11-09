@@ -132,6 +132,12 @@ impl<T> Default for NamedMap<T> {
     }
 }
 
+impl<T> From<HashMap<String, T>> for NamedMap<T> {
+    fn from(map: HashMap<String, T>) -> Self {
+        NamedMap(map)
+    }
+}
+
 // Make `NamedMap<T>` behave like a `HashMap` for seamless use.
 impl<T> Deref for NamedMap<T> {
     type Target = HashMap<String, T>;
